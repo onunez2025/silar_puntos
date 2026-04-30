@@ -2,8 +2,7 @@ import React, { useState, useCallback } from 'react';
 import * as XLSX from 'xlsx';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
-import { Upload, FileText, Download, CheckCircle2, AlertCircle, Loader2, Calendar, User, Hash } from 'lucide-react';
-import JSZip from 'jszip';
+import { Upload, FileText, CheckCircle2, AlertCircle, Loader2, Calendar, User, Hash } from 'lucide-react';
 
 interface ServiceRow {
   id: string;
@@ -51,7 +50,7 @@ function App() {
   const [selectedTechnician, setSelectedTechnician] = useState<string>('');
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [atsNumber, setAtsNumber] = useState<string>('');
-  const [seriesAts, setSeriesAts] = useState<string>('');
+  const [seriesAts] = useState<string>('');
 
   const handleFileUpload = (file: File) => {
     setLoading(true);
@@ -180,7 +179,7 @@ function App() {
     y += 10;
 
     // Main Table
-    const tableBody = [];
+    const tableBody: any[] = [];
     
     // Header for "EFECTUADOS"
     tableBody.push([{ content: 'N°', styles: { halign: 'center', fontStyle: 'bold' } }, { content: 'EFECTUADOS', styles: { halign: 'center', fontStyle: 'bold' } }, { content: 'PUNTOS', styles: { halign: 'center', fontStyle: 'bold' } }]);
